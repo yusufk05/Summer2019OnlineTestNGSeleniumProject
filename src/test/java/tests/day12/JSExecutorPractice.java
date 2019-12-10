@@ -64,7 +64,8 @@ public class JSExecutorPractice {
        js.executeScript("arguments[0].setAttribute('value','some@email.com')", email);
        BrowserUtils.wait(2);
        js.executeScript("arguments[0].click()", submit);
-       BrowserUtils.wait(4);
+       BrowserUtils.wait(5);
+        System.out.println("Hello World");
     }
 
     @AfterMethod
