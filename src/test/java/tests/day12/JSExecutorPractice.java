@@ -66,7 +66,6 @@ public class JSExecutorPractice {
        js.executeScript("arguments[0].click()", submit);
        BrowserUtils.wait(2);
         System.out.println("Hello World");
-        System.out.println("no world");
     }
 
     @AfterMethod
