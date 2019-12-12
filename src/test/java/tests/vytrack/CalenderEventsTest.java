@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 public class CalenderEventsTest {
     private WebDriver driver;
-    private WebDriverWait wait; // For explicit wait
+    private WebDriverWait wait;
 
     @BeforeMethod
     public void setup(){
