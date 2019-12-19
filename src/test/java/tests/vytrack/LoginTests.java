@@ -15,7 +15,7 @@ import utils.Driver;
 
 public class LoginTests extends TestBase {
 
-    @Test(description = "Login ")
+    @Test(description = "Login Test")
     public void test1(){
         //create page object
         LoginPage loginPage = new LoginPage();
