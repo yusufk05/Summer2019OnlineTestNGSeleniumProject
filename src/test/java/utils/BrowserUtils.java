@@ -2,13 +2,15 @@ package utils;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.time.Duration;
 import java.util.Date;
+import java.util.NoSuchElementException;
+import java.util.function.Function;
 
 public class BrowserUtils {
 
@@ -25,7 +27,7 @@ public class BrowserUtils {
     /**
      * Waits for element to be not stale
      *
-     * @param element
+     * @param element Webelement
      */
     public static void waitForStaleElement(WebElement element) {
         int y = 0;
@@ -109,4 +111,49 @@ public class BrowserUtils {
         }
         return target;
     }
+
+    /**
+     * Wait 15 seconds with polling interval of 200 milliseconds then click
+     *
+     * @param webElement of element
+     */
+    public static void clickWithWait(WebElement webElement) {
+        Wait wait = new FluentWait<>(Driver.get())
+                .withTimeout(Duration.ofSeconds(15))
+                .pollingEvery(Duration.ofMillis(800))
+                .ignoring(NoSuchElementException.class)
+                .ignoring(ElementClickInterceptedException.class)
+                .ignoring(StaleElementReferenceException.class)
+                .ignoring(WebDriverException.class);
+        WebElement element = (WebElement) wait.until((Function<WebDriver, WebElement>) driver -> webElement);
+        try {
+            element.click();
+        } catch (WebDriverException e) {
+            System.out.println(e.getMessage());
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+        }
+    }
+
+    public static void waitForPageToLoad(long timeOutInSeconds) {
+        ExpectedCondition<Boolean> expectation = driver -> ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
+        try {
+            WebDriverWait wait = new WebDriverWait(Driver.get(), timeOutInSeconds);
+            wait.until(expectation);
+        } catch (Throwable error) {
+            error.printStackTrace();
+        }
+    }
+
+
+
+
+
+
+
+
+
 }

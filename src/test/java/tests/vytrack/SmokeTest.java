@@ -19,6 +19,9 @@ public class SmokeTest extends TestBase {
 
         loginPage.navigateTo(moduleName,subModuleName);
 
+        loginPage.waitUntilLoaderMaskDisappear();
+        loginPage.waitForPageSubTitle(pageSubtitle);
+
         Assert.assertEquals(loginPage.getPageSubTitle(), pageSubtitle);
 
         extentTest.pass("Verified that page subtitle '"+pageSubtitle+"' is displayed");
@@ -28,9 +31,12 @@ public class SmokeTest extends TestBase {
     public Object[][] navigationInfo(){
         return new Object[][]{
                 {"Dashboards", "Dashboard", "Dashboard"},
-                {"Dashboard", "Manage Dashboard", "All Manage Dashboard"},
+                {"Dashboards", "Manage Dashboards", "All Manage Dashboards"},
                 {"Fleet", "Vehicles", "All Cars"},
-                {"Customers", "Accounts", "All Accounts"}
+                {"Customers", "Accounts", "All Accounts"},
+                {"Activities", "Calendar Events", "All Calendar Events"},
+                {"Activities", "Calls", "All Calls"},
+                {"Sales", "Opportunities", "Open Opportunities"}
         };
     }
 
