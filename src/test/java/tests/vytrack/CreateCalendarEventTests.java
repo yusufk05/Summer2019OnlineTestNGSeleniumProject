@@ -6,7 +6,6 @@ import pages.CalendarEventsPage;
 import pages.CreateCalendarEventPage;
 import pages.LoginPage;
 import tests.TestBase;
-import utils.ConfigurationReader;
 
 public class CreateCalendarEventTests extends TestBase {
 
@@ -24,7 +23,7 @@ public class CreateCalendarEventTests extends TestBase {
         calendarEventsPage.clickToCreateCalendarEvent();
 
         calendarEventsPage.waitUntilLoaderMaskDisappear();
-        String expectedOwner = " Stephan Haley";
+        String expectedOwner = " Pearl Wuckert";
         String actualOwner = createCalendarEventPage.owner.getText();
 
         Assert.assertEquals(actualOwner,expectedOwner);
