@@ -1,0 +1,22 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Regression">
+<!--    <test name = "Login tests">-->
+<!--        <classes>-->
+<!--            <class name = "tests.vytrack.LoginTests"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--    <test name = "Calendar Events Tests">-->
+<!--        <classes>-->
+<!--            <class name = "tests.vytrack.NewCalendarEventsTests"/>-->
+<!--        </classes>-->
+<!--    </test>-->
+
+<!--in this case we don't need to specify every class one by one, just include package-->
+    <test name = "VyTrack Regression Tests">
+        <parameter name = "test" value = "regression"></parameter>
+        <packages>
+            <package name = "tests.vytrack"/>
+        </packages>
+    </test>
+</suite>
+
